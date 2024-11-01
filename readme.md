@@ -2,4 +2,4 @@
 
 ## Data Modeling
 
-![ER Diagram of Data Modeling](./src/main/resources/LACrime.drawio.png)
+![ER Diagram of Data Modeling](./src/main/resources/LACrimeDA.drawio.png)
