@@ -92,8 +92,7 @@ object Main{
 //        sampleDf.repartition(1).write.mode("overwrite").json("src/main/output/sample")
   }
 
-  def generateIndex(): Column = {
-    val startingIndex = 1
+  def generateIndex(startingIndex: Int = 1): Column = {
     monotonically_increasing_id() + startingIndex
   }
 }
