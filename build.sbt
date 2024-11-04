@@ -13,4 +13,5 @@ val sparkVersion = "3.5.3"
 libraryDependencies ++= Seq(
   "org.apache.spark" %% "spark-core" % sparkVersion,
   "org.apache.spark" %% "spark-sql" % sparkVersion,
+  "com.mysql" % "mysql-connector-j" % "9.0.0"
 )

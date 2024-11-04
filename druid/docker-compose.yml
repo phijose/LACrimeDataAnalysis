@@ -1,0 +1,39 @@
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql-druid
+    environment:
+      MYSQL_ROOT_PASSWORD: root_password
+      MYSQL_DATABASE: druid
+      MYSQL_USER: druid_user
+      MYSQL_PASSWORD: druid_password
+    ports:
+      - "3306:3306"
+    networks:
+      - druid-network
+
+  druid:
+    image: apache/druid:31.0.0
+    container_name: druid-standalone
+    depends_on:
+      - mysql
+    environment:
+      DRUID_METADATA_STORAGE_TYPE: mysql
+      DRUID_METADATA_STORAGE_MYSQL_CONNECT_URI: jdbc:mysql://mysql:3306/druid
+      DRUID_METADATA_STORAGE_MYSQL_USER: druid_user
+      DRUID_METADATA_STORAGE_MYSQL_PASSWORD: druid_password
+    ports:
+      - "8888:8888"
+      - "8081:8081"
+      - "8090:8090"
+      - "8082:8082"
+    command: ["start-micro-quickstart"]
+    tty: true
+    stdin_open: true
+    networks:
+      - druid-network
+
+networks:
+  druid-network:
+    external: true

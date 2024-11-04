@@ -6,6 +6,9 @@ target/
 # resources
 /src/main/resources/LACrimeData/
 
+# output
+/src/main/output/
+
 ### IntelliJ IDEA ###
 .idea/
 .idea/modules.xml
