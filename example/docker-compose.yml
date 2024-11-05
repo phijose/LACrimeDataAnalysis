@@ -36,6 +36,7 @@ services:
       - "5432:5432"
     volumes:
       - metadata_data:/var/lib/postgresql/data
+      - C:\Users\phijo\Documents\scala\LACrimeDataAnalysis\src\main\output\LACrimes:/data/output/LACrimes
     environment:
       - POSTGRES_PASSWORD=FoolishPassword
       - POSTGRES_USER=druid
@@ -49,6 +50,8 @@ services:
       - "2181:2181"
     environment:
       - ZOO_MY_ID=1
+    volumes:
+      - C:\Users\phijo\Documents\scala\LACrimeDataAnalysis\src\main\output\LACrimes:/data/output/LACrimes
 
   coordinator:
     image: apache/druid:31.0.0
@@ -56,6 +59,7 @@ services:
     volumes:
       - druid_shared:/opt/shared
       - coordinator_var:/opt/druid/var
+      - C:\Users\phijo\Documents\scala\LACrimeDataAnalysis\src\main\output\LACrimes:/data/output/LACrimes
     depends_on:
       - zookeeper
       - postgres
@@ -71,6 +75,7 @@ services:
     container_name: broker
     volumes:
       - broker_var:/opt/druid/var
+      - C:\Users\phijo\Documents\scala\LACrimeDataAnalysis\src\main\output\LACrimes:/data/output/LACrimes
     depends_on:
       - zookeeper
       - postgres
@@ -88,6 +93,7 @@ services:
     volumes:
       - druid_shared:/opt/shared
       - historical_var:/opt/druid/var
+      - C:\Users\phijo\Documents\scala\LACrimeDataAnalysis\src\main\output\LACrimes:/data/output/LACrimes
     depends_on:
       - zookeeper
       - postgres
@@ -105,6 +111,7 @@ services:
     volumes:
       - druid_shared:/opt/shared
       - middle_var:/opt/druid/var
+      - C:\Users\phijo\Documents\scala\LACrimeDataAnalysis\src\main\output\LACrimes:/data/output/LACrimes
     depends_on:
       - zookeeper
       - postgres
@@ -122,6 +129,7 @@ services:
     container_name: router
     volumes:
       - router_var:/opt/druid/var
+      - C:\Users\phijo\Documents\scala\LACrimeDataAnalysis\src\main\output\LACrimes:/data/output/LACrimes
     depends_on:
       - zookeeper
       - postgres
